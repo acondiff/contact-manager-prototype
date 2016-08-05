@@ -219,7 +219,7 @@ app.controller('ListCtrl', ['$scope', '$rootScope', '$http', '$store', function(
             };
         });
     }
-    $http.get('/assets/data/contacts.json').success(function(data) {
+    $http.get('assets/data/contacts.json').success(function(data) {
        list = data;
        for(i in list) {
          list[i].id = parseInt(i);
