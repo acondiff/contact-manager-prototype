@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html ng-app="app" ng-controller="AppCtrl">
+<head>
+    <title>Contact Manager – Intuit</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link href="assets/images/favicon.png" rel="icon" type="image/x-icon" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/angular-material/1.0.9/angular-material.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/animate.css/3.0.0/animate.min.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.5/select2.css">
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.8.5/css/selectize.default.css">
+    <!-- inject:css -->
+    <!-- endinject -->
+    <script src="https://use.typekit.net/lvg5cpj.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    <!-- inject:js -->
+    <!-- endinject -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+</head>
+<body>
+    <div id="app-frame" ng-class="{'alert-visible':alertVisible}" class="{{currentAppString}}">
+        <div ng-include="'partials/appbar.html'"></div>
+        <div id="content-wrap">
+            <div id="content" ui-view></div>
+        </div>
+    </div>
+</body>
+</html>

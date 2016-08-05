@@ -1,0 +1,43 @@
+{
+  "author": "Austin Condiff",
+  "name": "Hudl",
+  "id": "hudl",
+  "version": "0.0.0",
+  "description": "Test",
+  "homepage": "",
+  "licenses": {
+    "type": "",
+    "url": ""
+  },
+  "bugs": "",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "devHostname": "",
+  "dependencies": {
+    "gulp-concat-vendor": "0.0.4",
+    "gulp-notify": "^2.2.0"
+  },
+  "devDependencies": {
+    "gulp": "*",
+    "gulp-bump": "*",
+    "gulp-concat": "*",
+    "gulp-html2js": "*",
+    "gulp-jshint": "*",
+    "gulp-minify-css": "*",
+    "gulp-rename": "*",
+    "gulp-sass": "*",
+    "gulp-uglify": "*",
+    "gulp-inject": "*",
+    "gulp-sourcemaps": "*",
+    "browser-sync": "*",
+    "gulp-clean": "*",
+    "gulp-swig": "*",
+    "gulp-ng-html2js": "*",
+    "gulp-ng-annotate": "*",
+    "gulp-minify-html": "*",
+    "gulp-angular-templatecache": "*",
+    "gulp-plumber": "*"
+  }
+}

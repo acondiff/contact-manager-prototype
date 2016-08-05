@@ -1,0 +1,69 @@
+$grid-gutter-width: 20px !default;
+$line-height-base: 1.5 !default;
+
+// Typography-related.
+$sansFontFamily: Roboto, sans-serif;
+
+// Colors
+$blue: #3d6bda;
+$turquoise: #0ACCA6;
+$green: #7ECC69;
+$yellow: #FFC033;
+$orange: #f77b00;
+$red: #ED594A;
+$purple: #9C72B7;
+$offWhite: #F5F7F7;
+
+$border-gray: #D9DFE0;
+
+$primaryColor: $blue;
+$primaryColorLight: lighten($primaryColor, 3%);
+$primaryColorDark: darken($primaryColor, 5%);
+
+$secondaryColor: $orange;
+$secondaryColorLight: lighten($secondaryColor, 3%);
+$secondaryColorDark: darken($secondaryColor, 5%);
+
+$gray-darker:            #193048;
+$gray-dark:              #243c54;
+$gray:                   #24405d;
+$gray-light:             #eff3f4;
+$gray-lighter:           #f4f6f6;
+
+$brand-primary:         $blue !default;
+$brand-success:         $green !default;
+$brand-info:            $purple !default;
+$brand-warning:         $yellow !default;
+$brand-danger:          $red !default;
+
+$bodyBgColor: #eaeaea;
+
+$navWidth: 0;
+$navBgColor: $blue;
+$appbarColor: white;
+$toolbarColor: #3d6bda;
+$sidebarWidth: 400px;
+
+$appbarHeight: 0;
+$appbarWidth: 85px;
+$modulebarHeight: 60px;
+$toolbarHeight: 65px;
+
+$leftSidebarWidth: 240px;
+$rightSidebarWidth: 300px;
+
+$font-family: "Roboto", sans-serif;
+
+$line-height-base: 1.25 !default; // 20/14
+
+$border-radius-base: 2px !default;
+$border-radius-large: 3px !default;
+$border-radius-small: 1px !default;
+
+$breakpoints: (
+  'phone': 320px,
+  'tablet': 768px,
+  'desktop-narrow': 1024px,
+  'desktop': 1200px,
+  'desktop-wide': 1400px
+) !default;

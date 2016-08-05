@@ -1,0 +1,167 @@
+<div class="toolbar">
+    <h3>Manage Contacts</h3>
+    <div class="search-wrap">
+        <div class="search">
+            <input type="text" placeholder="Search contacts" id="list-search" ng-model="contactSearch">
+            <md-icon class="search-icon" md-svg-src="assets/images/icons/icon-search.svg"></md-icon>
+            <i class="material-icons cancel-btn" ng-if="contactSearch" ng-click="clearContactSearch($event)" ng-mousedown="contactSearchMouseDown($event)">cancel</i>
+        </div>
+    </div>
+    <div class="actions">
+      <md-button class="md-icon-button" aria-label="delete" ng-click="deleteContact()"><md-icon md-svg-src="assets/images/icons/icon-trash.svg"></md-icon></md-button>
+      <md-button class="md-icon-button" aria-label="print" ng-click="printList()"><md-icon md-svg-src="assets/images/icons/icon-print.svg"></md-icon></md-button>
+      <md-button class="md-icon-button" aria-label="download" ng-click="printList()"><md-icon md-svg-src="assets/images/icons/icon-download.svg"></md-icon></md-button>
+      <md-button class="md-icon-button" aria-label="import" ng-click="printList()"><md-icon md-svg-src="assets/images/icons/icon-import.svg"></md-icon></md-button>
+    </div>
+</div>
+<div class="list-wrap">
+    <div class="list-contacts-wrap">
+        <div class="contact-list">
+            <div class="list-header">
+                <div class="tr">
+                    <div class="td photo"><span style="margin-left:12px">Photo</span></div>
+                    <div class="td fname" ng-click="listOrder('fname')">First name <span class="sortorder" ng-show="predicate === 'fname'" ng-class="{reverse:reverse}"><i class="material-icons" ng-if="reverse">keyboard_arrow_down</i><i class="material-icons" ng-if="!reverse">keyboard_arrow_up</i></span></div>
+                    <div class="td lname" ng-click="listOrder('lname')">Last name <span class="sortorder" ng-show="predicate === 'lname'" ng-class="{reverse:reverse}"><i class="material-icons" ng-if="reverse">keyboard_arrow_down</i><i class="material-icons" ng-if="!reverse">keyboard_arrow_up</i></span></div>
+                    <div class="td email" ng-click="listOrder('email')">Email <span class="sortorder" ng-show="predicate === 'email'" ng-class="{reverse:reverse}"><i class="material-icons" ng-if="reverse">keyboard_arrow_down</i><i class="material-icons" ng-if="!reverse">keyboard_arrow_up</i></span></div>
+                    <div class="td phone" ng-click="listOrder('phone')">Phone <span class="sortorder" ng-show="predicate === 'phone'" ng-class="{reverse:reverse}"><i class="material-icons" ng-if="reverse">keyboard_arrow_down</i><i class="material-icons" ng-if="!reverse">keyboard_arrow_up</i></span></div>
+                    <div class="td company" ng-click="listOrder('company')">Company <span class="sortorder" ng-show="predicate === 'company'" ng-class="{reverse:reverse}"><i class="material-icons" ng-if="reverse">keyboard_arrow_down</i><i class="material-icons" ng-if="!reverse">keyboard_arrow_up</i></span></div>
+                    <div class="td position" ng-click="listOrder('position')">Position <span class="sortorder" ng-show="predicate === 'position'" ng-class="{reverse:reverse}"><i class="material-icons" ng-if="reverse">keyboard_arrow_down</i><i class="material-icons" ng-if="!reverse">keyboard_arrow_up</i></span></div>
+                </div>
+            </div>
+            <div class="list-body-wrap" ng-keydown="keyPress($event)" tabindex="1">
+                <div class="list-body">
+                    <div class="tr" ng-repeat="contact in list | filter: contactSearch | orderBy: predicate:reverse as filteredList track by contact.id" ng-click="selectContactByIndex($index)" ng-hide="addingNewContact && contact.id === activeContact.id" ng-class="{selected: contact.id === activeContact.id}">
+                        <div class="td photo"><div class="avatar" style="background-image:url({{contact.photo}})"></div></div>
+                        <div class="td fname">{{contact.fname}}</div>
+                        <div class="td lname">{{contact.lname}}</div>
+                        <div class="td email">{{contact.email}}</div>
+                        <div class="td phone">{{contact.phone}}</div>
+                        <div class="td company">{{contact.company}}</div>
+                        <div class="td position">{{contact.position}}</div>
+                    </div>
+                </div>
+            </div>
+            <md-button class="md-fab" aria-label="Add new contact" ng-click="addNewContact()">
+                <md-icon md-svg-src="assets/images/icons/icon-add.svg"></md-icon>
+            </md-button>
+        </div>
+        <div class="contact-details" ng-class="{addingContact: addingNewContact===true}">
+            <div class="contact-summary">
+                <div class="avatar" style="background-image:url({{activeContact.photo}})"><i class="material-icons" ng-if="!activeContact.photo">person</i></div>
+                <div class="info">
+                    <div class="name"><span class="num">{{activeContact.num}}{{(!activeContact.fname && addingNewContact) && (!activeContact.lname && addingNewContact) ? 'Add New Contact' : ''}}</span> {{activeContact.lname}}{{(activeContact.lname && activeContact.fname)?', ':''}}{{activeContact.fname}} <span class="cls" ng-if="activeContact.cls">{{activeContact.position}}</span></div>
+                    <div class="pos"><span class="pos-txt">{{activeContact.company}}</span></div>
+                </div>
+            </div>
+            <tabset>
+                <tab heading="Details" active="tabs[0].active" ng-click="gotoTab(0)">
+                    <div class="tab-pane-inside details-tab">
+                        <div class="details">
+                            <div class="row fname">
+                                <div class="col-xs-5 data-label">First name</div>
+                                <div class="col-xs-7 data-value">
+                                    <input type="text" autocomplete="off" ng-disabled="!editingContact" ng-model="activeContact.fname">
+                                </div>
+                            </div>
+                            <div class="row lname">
+                                <div class="col-xs-5 data-label">Last name</div>
+                                <div class="col-xs-7 data-value">
+                                    <input type="text" autocomplete="off" ng-disabled="!editingContact" ng-model="activeContact.lname">
+                                </div>
+                            </div>
+                            <div class="row email">
+                                <div class="col-xs-5 data-label">Email</div>
+                                <div class="col-xs-7 data-value">
+                                    <input type="text" autocomplete="off" ng-disabled="!editingContact" ng-show="editingContact" ng-model="activeContact.email">
+                                    <a href="mailto:{{activeContact.email}}" ng-hide="editingContact">{{activeContact.email}}</a>
+                                </div>
+                            </div>
+                            <div class="row phone">
+                                <div class="col-xs-5 data-label">Phone</div>
+                                <div class="col-xs-7 data-value">
+                                    <input type="text" autocomplete="off" ng-disabled="!editingContact" ng-model="activeContact.phone">
+                                </div>
+                            </div>
+                            <div class="row street-address">
+                                <div class="col-xs-5 data-label">Street address</div>
+                                <div class="col-xs-7 data-value">
+                                    <input type="text" autocomplete="off" ng-disabled="!editingContact" ng-model="activeContact.address.line1">
+                                    <input type="text" autocomplete="off" ng-disabled="!editingContact" ng-model="activeContact.address.line2">
+                                </div>
+                            </div>
+                            <div class="row city">
+                                <div class="col-xs-5 data-label">City</div>
+                                <div class="col-xs-7 data-value">
+                                    <input type="text" autocomplete="off" ng-disabled="!editingContact" ng-model="activeContact.address.city">
+                                </div>
+                            </div>
+                            <div class="row state">
+                                <div class="col-xs-5 data-label">State</div>
+                                <div class="col-xs-7 data-value">
+                                    <input type="text" autocomplete="off" ng-disabled="!editingContact" ng-model="activeContact.address.state">
+                                </div>
+                            </div>
+                            <div class="row zip">
+                                <div class="col-xs-5 data-label">Zip code</div>
+                                <div class="col-xs-7 data-value">
+                                    <input type="number" autocomplete="off" ng-disabled="!editingContact" ng-model="activeContact.address.zip">
+                                </div>
+                            </div>
+                            <div class="row company">
+                                <div class="col-xs-5 data-label">Company</div>
+                                <div class="col-xs-7 data-value">
+                                    <input type="text" autocomplete="off" ng-disabled="!editingContact" ng-model="activeContact.company">
+                                </div>
+                            </div>
+                            <div class="row phone">
+                                <div class="col-xs-5 data-label">Position</div>
+                                <div class="col-xs-7 data-value">
+                                    <input type="text" autocomplete="off" ng-disabled="!editingContact" ng-model="activeContact.position">
+                                </div>
+                            </div>
+                            <div class="row contact-avatar" ng-if="editingContact">
+                                <div class="col-xs-5">
+                                    <label class="data-label">Avatar</label>
+                                  </div>
+                                  <div class="col-xs-7">
+                                    <input type="file" id="contact-avatar-uploader" onchange="angular.element(this).scope().encodeAvatar(angular.element(this))" name="file" class="inputfile" />
+                                    <img class="avatar-preview" style="width: 100%" ng-if="activeContact.photo" ng-src="{{activeContact.photo}}" />
+                                    <label for="contact-avatar-uploader">{{(activeContact.photo) ? 'Change avatar' : 'Choose an image'}}</label>
+                                </div>
+                            </div>
+                            <div class="row notes">
+                                <div class="col-xs-12">
+                                    <label class="data-label" for="contact-notes">Notes</label>
+                                    <textarea id="contact-notes" ng-blur="saveEditContact()" placeholder="Add a note" ng-model="activeContact.notes"></textarea>
+                                </div>
+                            </div>
+                            <div class="row edit" ng-if="!editingContact">
+                                <div class="col-xs-12">
+                                    <button class="edit btn" ng-click="editContact()">Edit Contact</button>
+                                </div>
+                            </div>
+                            <div class="row edit" ng-if="editingContact">
+                                <div class="col-xs-6">
+                                    <button class="edit cancel btn" ng-click="cancelEditContact()">Cancel</button>
+                                </div>
+                                <div class="col-xs-6" ng-if="!addingNewContact">
+                                    <button class="edit delete btn" ng-click="deleteContact(activeContact.id)">Delete</button>
+                                </div>
+                                <div class="col-xs-{{(addingNewContact) ? '6':'12'}}">
+                                    <button class="edit save btn" ng-click="saveEditContact()">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </tab>
+                <tab heading="Activity" active="tabs[1].active" ng-click="gotoTab(1)">
+                    <div class="tab-pane-inside activity-tab">
+                        <ul class="activity">
+                            <li ng-repeat="entry in activeContact.activity">{{entry.time}} minutes on {{entry.date}}</li>
+                        </ul>
+                    </div>
+                </tab>
+            </tabset>
+        </div>
+    </div>
+</div>

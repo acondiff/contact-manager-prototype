@@ -1,0 +1,10 @@
+body {
+	font-family: $sansFontFamily;
+}
+a {
+	cursor: pointer;
+	color: $primaryColor;
+	&:focus, &:hover {
+		color: $primaryColorDark;
+	}
+}

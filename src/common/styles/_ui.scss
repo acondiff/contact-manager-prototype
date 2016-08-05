@@ -1,0 +1,356 @@
+a, 
+a:focus, 
+a:active,
+a:focus:active,  
+input, 
+input:focus, 
+input:active, 
+input:focus:active, 
+button, 
+button:focus, 
+button:focus:active, 
+.btn:active, 
+.btn:focus, 
+.btn:active,
+.btn:focus:active {
+	outline: 0;
+	outline: none;
+}
+
+.btn {
+	background-color: $primaryColor;
+	color: white;
+	&:hover, &:focus {
+		background-color: $primaryColorLight;
+		color: white;
+	}
+	&:active {
+		background-color: $primaryColorDark;
+		color: white;
+	}
+}
+
+.inline {
+	display: inline-block;
+}
+
+.tooltip {
+	.tooltip-inner {
+		background: rgba($gray-dark,.8);
+	}
+	&.top {
+		.tooltip-arrow {
+			border-top-color: rgba($gray-dark,.8);
+		}
+	}
+	&.right {
+		.tooltip-arrow {
+			border-right-color: rgba($gray-dark,.8);
+		}
+	}
+	&.bottom {
+		.tooltip-arrow {
+			border-bottom-color: rgba($gray-dark,.8);
+		}
+	}
+	&.left {
+		.tooltip-arrow {
+			border-left-color: rgba($gray-dark,.8);
+		}
+	}
+}
+
+.dropdown-menu {
+	box-shadow: 0 2px 0 rgba(0,0,0,0.05);
+	right: 10px;
+}
+
+.btn {
+	//border: 1px solid rgba(0,0,0,0.1);
+	border: 0;
+	font-size: 13px;
+	transition: .1s;
+	text-transform: uppercase;
+	font-weight: 600;
+	padding: 10px 21px;
+	&.btn-default {
+		color: $gray;
+	}
+	&.btn-lg {
+		font-size: 15px;
+	}
+	&:hover {
+		//border: 1px solid rgba(0,0,0,0.1);
+	}
+	&:focus {
+		//border: 1px solid rgba(0,0,0,0.5);
+	}
+	&:active {
+		//border: 1px solid rgba(0,0,0,0.1);
+		box-shadow: 0 0 0 transparent;
+	}
+	&.btn-default:hover {
+		//background-color: lighten($gray-light, 3%);
+	}
+	&.btn-primary:hover,
+	&.btn-primary:focus {
+		background-color: lighten($blue, 3%);
+	}
+	&.btn-success:hover,
+	&.btn-success:focus {
+		background-color: lighten($green, 4%);
+	}
+	&.btn-warning:hover,
+	&.btn-warning:focus {
+		background-color: lighten($yellow, 7%);
+	}
+	&.btn-danger:hover,
+	&.btn-danger:focus {
+		background-color: lighten($red, 5%);
+	}
+	&.btn-primary:active {
+		background-color: darken($blue, 7%);
+	}
+	&.btn-success:active {
+		background-color: darken($green, 6%);
+	}
+	&.btn-warning:active {
+		background-color: darken($yellow, 3%);
+	}
+	&.btn-danger:active {
+		background-color: darken($red, 5%);
+	}
+	&.btn-info:active {
+		background-color: darken($purple, 6%);
+	}
+
+}
+
+input[type=radio],
+input[type=checkbox] {
+  display: none;
+}
+
+input[type=radio] ~ label,
+input[type=checkbox] ~ label {
+  padding-left: 1.8em;
+  position: relative;
+  margin-bottom: .5em;
+  font-weight: normal;
+  margin-right: .5em;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  transition: .2s;
+  // &:hover {
+  // 	color: $blue;
+  // }
+}
+input[type=radio] ~ label:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: -0.625em;
+  background-color: white;
+  border: 2px solid $gray;
+  -moz-border-radius: 2em;
+  -webkit-border-radius: 2em;
+  border-radius: 2em; 
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  transition: .2s;
+}
+
+input[type=radio] ~ label:active:before {
+  background-color: #F7F7F9;
+}
+input[type=radio] ~ label:hover:before {
+  border-color: #ACAEAF;
+}
+
+input[type=radio] ~ label:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: -0.625em;
+  background-color: white;
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  opacity: 0;
+  -webkit-transform: scale(0);
+  -moz-transform: scale(0);
+  -ms-transform: scale(0);
+  transform: scale(0);
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  transition: .2s;
+}
+
+input[type=radio]:checked ~ label:before {
+  background-color: $gray;
+}
+input[type=radio]:checked ~ label:hover:before {
+	background-color: $primaryColor;
+}
+input[type=radio]:checked ~ label:after {
+  opacity: 1;
+  -webkit-transform: scale(0.5);
+  -moz-transform: scale(0.5);
+  -ms-transform: scale(0.5);
+  transform: scale(0.5);
+}
+
+input[type=checkbox] ~ label:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: 1.25em;
+  height: 1.25em;
+  margin-top: -0.625em;
+  background-color: white;
+  border: 2px solid $gray;
+  border-radius: .2em; 
+  transition: .2s;
+}
+
+input[type=checkbox] ~ label:active:before {
+  background-color: #F7F7F9;
+}
+input[type=checkbox] ~ label:hover:before {
+  border-color: $primaryColor;
+}
+
+input[type=checkbox] ~ label:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  width: .75em;
+  height: 1.5em;
+  border-right: .4em solid white;
+  border-bottom: .4em solid white;
+  margin-top: -.85em;
+  margin-left: 0.25em;
+  background-color: transparent;
+  opacity: 0;
+  -webkit-transform: scale(0) rotate(45deg);
+  -moz-transform: scale(0) rotate(45deg);
+  -ms-transform: scale(0) rotate(45deg);
+  transform: scale(0) rotate(45deg);
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  transition: .2s;
+}
+
+input[type=checkbox]:checked ~ label:before {
+  background-color: $gray;
+}
+input[type=checkbox]:checked ~ label:hover:before {
+	background-color: $primaryColor;
+}
+input[type=checkbox]:checked ~ label:after {
+  opacity: 1;
+  -webkit-transform: scale(0.5) rotate(45deg);
+  -moz-transform: scale(0.5) rotate(45deg);
+  -ms-transform: scale(0.5) rotate(45deg);
+  transform: scale(0.5) rotate(45deg);
+}
+
+.toggle-control {
+	input[type=radio] ~ label:before,
+	input[type=radio] ~ label:after {
+		display: none;
+	}
+	.option {
+		display: inline-block;
+		width: 50%;	
+		&:first-child {
+			input[type=radio] ~ label {
+				border-radius: .2em 0 0 .2em; 
+			}
+		}
+		&:last-child {
+			margin-left: -.35em;
+			input[type=radio] ~ label {
+				border-radius: 0 .2em .2em 0;
+			}
+		}
+		&.success{
+			input[type=radio]:checked ~ label {
+				background-color: $green; 
+			}
+		}
+		&.danger{
+			input[type=radio]:checked ~ label {
+				background-color: $red; 
+			}
+		}
+	}
+	input[type=radio] ~ label {
+		background-color: white;
+		border: 1px solid #E1E2E2;
+		text-align: center;
+		padding: 6px 10px;
+		margin: 0;
+		width: 100%;
+		cursor: pointer;
+		transition: .2s;
+		&:hover {
+			background-color: #f9f9f9;
+		}
+		&:active {
+			background-color: $gray-lighter;
+		}
+	}
+	input[type=radio]:checked ~ label {
+		background-color: $primaryColor;
+		color: white;
+		cursor: default;
+	}
+}
+
+.row > div > .btn {
+	width: 100%;
+}
+
+.dropdown-menu {
+	min-width: 200px;
+	border: 0;
+	box-shadow: 0 0 20px 0 rgba(0,0,0,.2);
+	> li {
+		> a {
+			display: block;
+			padding: 8px 24px;
+			clear: both;
+			font-weight: 400;
+			line-height: 1.5;
+			color: #38383a;
+			white-space: nowrap;			
+		}
+	}
+}
+
+.modal-backdrop {
+	bottom: 0;
+	position: absolute;
+	top: 0;
+	right: 0;
+	left: 0;
+	background-color: #000;
+}
+
