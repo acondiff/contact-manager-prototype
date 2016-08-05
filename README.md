@@ -1,4 +1,9 @@
 # Contact Manager Prototype
+
+## Demo
+
+The demo can be found [here](http://www.austincondiff.com/contacts).
+
 ## Setup
 
 Clone the repo
