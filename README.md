@@ -14,6 +14,6 @@ Open terminal and head to the cloned directory
 
 ```$ bower install```
 
-````$ gulp```
+```$ gulp```
 
 In your browser go to `localhost:3000`
